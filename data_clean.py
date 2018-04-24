@@ -34,16 +34,16 @@ def merge_data(TRIAL_NUMBER):
     performs needed operations, and returns a merged dataframe of all of the data
     '''
     # import and examine the gyroscope data
-    gyro = pd.read_csv(str(TRIAL_NUMBER) + '-gyr.csv')
+    gyro = pd.read_csv('data/' + str(TRIAL_NUMBER) + '-gyr.csv')
 
     # import and examine the gyroscope data
-    acc = pd.read_csv(str(TRIAL_NUMBER) + '-acc.csv')
+    acc = pd.read_csv('data/' + str(TRIAL_NUMBER) + '-acc.csv')
 
     # concatenate the acc and gyro
     trial_data = concat_acc_gyro(acc, gyro)
 
     # import gpx data and put into dataframe
-    gpx_df = gpx_to_pandas(str(TRIAL_NUMBER) + '.gpx')
+    gpx_df = gpx_to_pandas('data/' + str(TRIAL_NUMBER) + '.gpx')
     # convert Time column from timestamp to seconds
     gpx_df['Time'] = [seconds(gpx_df, i) for i in range(len(gpx_df))] 
 
